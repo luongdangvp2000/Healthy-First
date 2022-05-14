@@ -8,13 +8,13 @@ export default function Navbar() {
                 <div className="logo">
                     <Link to="/">
                         {/* <img src="/images/logo-team.jpeg" alt="logo-team" /> */}
-                        Healthy_First
+                        Healthy First
                     </Link>
                 </div>
 
                 <nav>
                     <ul id="MenuItems">
-                        <li>Home</li>
+                        <li><Link to="/">Home</Link></li>
                         <li>
                             <Link to="/signin">
                                 Sign In

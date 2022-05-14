@@ -472,8 +472,14 @@ select:focus {
 }
 table {
   width: 100%;
+  
   border-collapse: collapse;
 }
+
+table, th, td{
+  border:1px solid black;
+}
+
 .cart-info {
   display: flex;
   flex-wrap: wrap;
@@ -481,8 +487,8 @@ table {
 th {
   text-align: left;
   padding: 5px;
-  color: #fff;
-  background: #ff523b;
+  color: black;
+  background: white;
   font-weight: normal;
 }
 td {
@@ -507,7 +513,7 @@ td img {
   justify-content: flex-end;
 }
 .total-price table {
-  border-top: 3px solid #ff523b;
+  border-top: 3px solid blue;
   width: 100%;
   max-width: 400px;
 }
@@ -523,10 +529,12 @@ th:last-child {
 .table tbody tr:nth-of-type(odd) {
   background-color: #f4f4f4;
 }
+
+
 .table td,
 .table th {
   text-align: left;
-  border: 0.1rem solid #e4e4e4;
+  border: 0.1rem solid black;
   padding: 0.5rem;
 }
 .table button {

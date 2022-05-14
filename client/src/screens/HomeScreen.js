@@ -7,7 +7,7 @@ export default function HomeScreen(props) {
             <div>
                 <div className="small-container">
                     <h2 className="title">Places</h2>
-                    <table className="places">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>NAME</th>
@@ -19,7 +19,7 @@ export default function HomeScreen(props) {
                         </thead>
                         <tbody>
                             {data.places.map((place) => (
-                                <tr className='place'>
+                                <tr key={place.slug} className='place'>
                                     <th>{place.name}</th>
                                     <th>{place.address}</th>
                                     <th>{place.number}</th>
