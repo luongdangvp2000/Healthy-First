@@ -7,6 +7,7 @@ const data = {
             number: '0123456789',
             businessType: 'Food production',
             idCertificate: 0,
+            image: 'images/Book_1.jpg',
         },
         {
             name: 'Banh mi Dan To',
@@ -15,6 +16,7 @@ const data = {
             number: '0123654789',
             businessType: 'Food production',
             idCertificate: 1,
+            image: 'images/Book_2.jpg',
         },
         {
             name: 'Thit cho Tay Ninh',
@@ -23,6 +25,7 @@ const data = {
             number: '0456123789',
             businessType: 'Food production',
             idCertificate: 2,
+            image: 'images/Book_3.jpg',
         },
         {
             name: 'Thit cho Thanh Hoa',
@@ -31,6 +34,7 @@ const data = {
             number: '0321654987',
             businessType: 'Food production',
             idCertificate: 3,
+            image: 'images/Book_4.jpg',
         },
         {
             name: 'Chim to dan',
@@ -39,6 +43,7 @@ const data = {
             number: '0789654321',
             businessType: 'Food production',
             idCertificate: 4,
+            image: 'images/Book_5.jpg',
         },
     ]
 }
