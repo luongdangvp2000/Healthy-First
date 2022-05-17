@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import data from '../data.js'
 
 export default function HomeScreen(props) {
@@ -21,7 +22,7 @@ export default function HomeScreen(props) {
                         <tbody>
                             {data.places.map((place) => (
                                 <tr key={place.slug} className='place'>
-                                    <th>{place.name}</th>
+                                    <th><Link to={`/place/${place.slug}`}>{place.name}</Link></th>
                                     <th>{place.address}</th>
                                     <th>{place.number}</th>
                                     <th>{place.businessType}</th>
