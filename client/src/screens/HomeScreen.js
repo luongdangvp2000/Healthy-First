@@ -15,6 +15,7 @@ export default function HomeScreen(props) {
                                 <th>NUMBER</th>
                                 <th>BUSINESS TYPE</th>
                                 <th>ID CERTIFICATE</th>
+                                <th>OPTIONS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,10 @@ export default function HomeScreen(props) {
                                     <th>{place.number}</th>
                                     <th>{place.businessType}</th>
                                     <th>{place.idCertificate}</th>
+                                    <th>
+                                        <p>Edit</p>
+                                        <p>Delete</p>
+                                    </th>
                                 </tr>
                             ))}
                         </tbody>
