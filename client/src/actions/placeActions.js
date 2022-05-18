@@ -28,7 +28,7 @@ export const detailsPlace = (placeId) => async (dispatch) => {
     dispatch({ type: PLACE_DETAILS_REQUEST, payload: placeId });
     try {
         const { data } = await Axios.get(`/api/places/${placeId}`)
-        dispatch({ type: PLACE_DETAILS_SUCCESS, payload: data.data});
+        dispatch({ type: PLACE_DETAILS_SUCCESS, payload: data});
     } catch (error) {
         dispatch({
             type: PLACE_DETAILS_FAIL,
