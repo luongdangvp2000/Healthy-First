@@ -750,6 +750,10 @@ form a {
   border-radius: 0.5rem;
 }
 
+.danger{
+  color: red;
+}
+
 .alert-info {
   color: #2020a0;
   background-color: #e0e0ff;

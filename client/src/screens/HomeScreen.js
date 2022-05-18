@@ -1,35 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-import LoadingBox from '../components/LoadingBox';
+ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import { useDispatch, useSelector } from 'react-redux';
+import { listPlaces } from '../actions/placeActions';
 //import data from '../data.js'
 
 export default function HomeScreen(props) {
-    const [places, setPlaces] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    // const [places, setPlaces] = useState([]);
+    // const [loading, setLoading] = useState(false);
+    // const [error, setError] = useState(false);
 
+    const dispatch = useDispatch();
+    const placeList = useSelector(state => state.placeList);
+    const {loading, error, places} = placeList;
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-                const result = await axios.get('/api/places');
-                setLoading(false);
-                setPlaces(result.data);
-            } catch (err) {
-                setError(err.message);
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, [])
+        dispatch(listPlaces());
+    }, [dispatch])
 
     return (
         <div>
             {loading ? (<LoadingBox></LoadingBox>)
                 :
-                error ? (<MessageBox>{error}</MessageBox>)
+                error ? (<MessageBox variant="danger">{error}</MessageBox>)
                     : (
                         <div>
                             <div className="small-container">
@@ -37,6 +30,7 @@ export default function HomeScreen(props) {
                                 <table className="table">
                                     <thead>
                                         <tr>
+                                            <th>STT</th>
                                             <th>NAME</th>
                                             <th>ADDRESS</th>
                                             <th>NUMBER</th>
@@ -48,7 +42,8 @@ export default function HomeScreen(props) {
                                     <tbody>
                                         {places.map((place) => (
                                             <tr key={place.slug} className='place'>
-                                                <th><Link to={`/place/${place.slug}`}>{place.name}</Link></th>
+                                                <th>{place.STT}</th>
+                                                <th><Link to={`/place/${place.id}`}>{place.name}</Link></th>
                                                 <th>{place.address}</th>
                                                 <th>{place.number}</th>
                                                 <th>{place.businessType}</th>
@@ -64,7 +59,6 @@ export default function HomeScreen(props) {
                             </div>
                         </div>
                     )}
-
         </div>
     )
 }
