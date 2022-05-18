@@ -10,7 +10,7 @@ export default function HomeScreen(props) {
     // const [places, setPlaces] = useState([]);
     // const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(false);
-
+    const place = props;
     const dispatch = useDispatch();
     const placeList = useSelector(state => state.placeList);
     const {loading, error, places} = placeList;
@@ -41,9 +41,9 @@ export default function HomeScreen(props) {
                                     </thead>
                                     <tbody>
                                         {places.map((place) => (
-                                            <tr key={place.slug} className='place'>
+                                            <tr key={place._id} className='place'>
                                                 <th>{place.STT}</th>
-                                                <th><Link to={`/place/${place.id}`}>{place.name}</Link></th>
+                                                <th><Link to={`/place/${place._id}`}>{place.name}</Link></th>
                                                 <th>{place.address}</th>
                                                 <th>{place.number}</th>
                                                 <th>{place.businessType}</th>
