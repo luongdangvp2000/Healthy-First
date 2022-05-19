@@ -6,7 +6,7 @@ import SigninScreen from './screens/SigninScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import Navbar from './components/Navbar';
 import PlaceScreen from './screens/PlaceScreen';
-
+import Footer from './components/Footer';
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/" element={<HomeScreen />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

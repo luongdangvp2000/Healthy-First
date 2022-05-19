@@ -8,9 +8,10 @@ export default function Navbar() {
                 <div className="logo">
                     <Link to="/">
                         {/* <img src="/images/logo-team.jpeg" alt="logo-team" /> */}
-                        Healthy First
+                        
                     </Link>
                 </div>
+
 
                 <nav>
                     <ul id="MenuItems">

@@ -1,5 +1,30 @@
+import bcrypt from 'bcryptjs';
 const data = {
-    places:[
+    users: [
+        {
+
+            name: 'Admin',
+            email: 'admin@gmail.com',
+            password: bcrypt.hashSync('1234', 8),
+            isAdmin: true,
+            // isSeller: true,
+            // seller: {
+            //     name: 'Puma',
+            //     logo: '/images/logo1.png',
+            //     description: 'best seller',
+            //     rating: 4.5,
+            //     numReviews: 120,
+
+            // },
+        },
+        {
+            name: 'Dangg',
+            email: 'user@gmail.com',
+            password: bcrypt.hashSync('1234', 8),
+            isAdmin: false,
+        }
+    ],
+    places: [
         {
             _id: '1',
             STT: 1,
@@ -10,7 +35,7 @@ const data = {
             businessType: 'Food production',
             idCertificate: 0,
             image: 'images/Book_1.jpg',
-            description:'',
+            description: '',
         },
         {
             _id: '2',
@@ -22,19 +47,19 @@ const data = {
             businessType: 'Food production',
             idCertificate: 1,
             image: 'images/Book_2.jpg',
-            description:'',
+            description: '',
         },
         {
             _id: '3',
             STT: 3,
             name: 'Thit cho Tay Ninh',
-            slug: 'thit-cho-tay-ninh', 
+            slug: 'thit-cho-tay-ninh',
             address: 'So 3, duong Pham Van Dong, phuong Dich Vong Hau, quan Cau Giay',
             number: '0456123789',
             businessType: 'Food production',
             idCertificate: 2,
             image: 'images/Book_3.jpg',
-            description:'',
+            description: '',
         },
         {
             _id: '4',
@@ -46,7 +71,7 @@ const data = {
             businessType: 'Food production',
             idCertificate: 3,
             image: 'images/Book_4.jpg',
-            description:'',
+            description: '',
         },
         {
             _id: '5',
@@ -58,9 +83,9 @@ const data = {
             businessType: 'Food production',
             idCertificate: 4,
             image: 'images/Book_5.jpg',
-            description:'',
+            description: '',
         },
     ]
 }
 
-export default data
+export default data;
