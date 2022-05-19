@@ -1,6 +1,9 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { placeDetailsReducer, placeListReducer } from "./reducers/placeReducers";
+import {
+    placeDetailsReducer,
+    placeListReducer
+} from "./reducers/placeReducers";
 
 const initialState = {};
 const reducer = combineReducers({

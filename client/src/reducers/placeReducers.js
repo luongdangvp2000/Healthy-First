@@ -31,7 +31,7 @@ export const placeDetailsReducer = (state = {
         case PLACE_DETAILS_REQUEST:
             return { loading: true };
         case PLACE_DETAILS_SUCCESS:
-            return { loading: false, product: action.payload };
+            return { loading: false, place: action.payload };
         case PLACE_DETAILS_FAIL:
             return { loading: false, error: action.payload };
         default:
