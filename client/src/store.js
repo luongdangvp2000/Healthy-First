@@ -5,7 +5,10 @@ import {
     placeListReducer,
 
 } from "./reducers/placeReducers";
-import { userSigninReducer } from './reducers/userReducers';
+import { 
+    userRegisterReducer, 
+    userSigninReducer, 
+} from './reducers/userReducers';
 
 
 const initialState = {
@@ -19,6 +22,7 @@ const reducer = combineReducers({
     placeList: placeListReducer,
     placeDetails: placeDetailsReducer,
     userSignin: userSigninReducer,
+    userRegister: userRegisterReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
