@@ -26,7 +26,7 @@ const data = {
     ],
     places: [
         {
-            _id: '1',
+            // _id: '1',
             STT: 1,
             name: 'Thit cho Ngu Kien',
             slug: 'thit-cho-ngu-kien',
@@ -35,10 +35,10 @@ const data = {
             businessType: 'Food production',
             idCertificate: 0,
             image: 'images/Book_1.jpg',
-            description: '',
+            description: 'Very Big',
         },
         {
-            _id: '2',
+            //_id: '2',
             STT: 2,
             name: 'Banh mi Dan To',
             slug: 'banh-mi-dan-to',
@@ -47,10 +47,10 @@ const data = {
             businessType: 'Food production',
             idCertificate: 1,
             image: 'images/Book_2.jpg',
-            description: '',
+            description: 'Very Big',
         },
         {
-            _id: '3',
+            //_id: '3',
             STT: 3,
             name: 'Thit cho Tay Ninh',
             slug: 'thit-cho-tay-ninh',
@@ -59,10 +59,10 @@ const data = {
             businessType: 'Food production',
             idCertificate: 2,
             image: 'images/Book_3.jpg',
-            description: '',
+            description: 'Very Big',
         },
         {
-            _id: '4',
+            //_id: '4',
             STT: 4,
             name: 'Thit cho Thanh Hoa',
             slug: 'thit-cho-thanh-hoa',
@@ -71,10 +71,10 @@ const data = {
             businessType: 'Food production',
             idCertificate: 3,
             image: 'images/Book_4.jpg',
-            description: '',
+            description: 'Very Big',
         },
         {
-            _id: '5',
+            //_id: '5',
             STT: 5,
             name: 'Chim to dan',
             slug: 'chim-to-dan',
@@ -83,7 +83,7 @@ const data = {
             businessType: 'Food production',
             idCertificate: 4,
             image: 'images/Book_5.jpg',
-            description: '',
+            description: 'Very Big',
         },
     ]
 }

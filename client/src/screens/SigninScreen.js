@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignScreen() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    
+    const submitHandler = (e) => {
+        e.preventDefault();
+        // Sigin action
+        //dispatch(signin(email, password));
+    };
     return (
         <div>
-            <form className="form">
+            <form className="form" onSubmit={submitHandler}>
                 <div>
                     <h1>Sign In</h1>
                 </div>
@@ -16,7 +26,7 @@ export default function SignScreen() {
                         id="email"
                         placeholder="Enter email"
                         required
-                       
+                        onChange={e => setEmail(e.target.value)}
                     ></input>
                 </div>
 
@@ -27,7 +37,7 @@ export default function SignScreen() {
                         id="password"
                         placeholder="Enter password"
                         required
-                     
+                        onChange={e => setPassword(e.target.value)}
                     ></input>
                 </div>
 
