@@ -13,8 +13,6 @@ placeRouter.get(
     })
 );
 
-
-
 placeRouter.get(
     '/seed',
     expressAsyncHandler(async (req, res) => {

@@ -8,12 +8,12 @@ export default function HeroSection() {
                 <div className="col-2">
                     <h1>
                         The Website Management<br />
-                        Read all About it!
+        
                     </h1>
-                    <p>
+                    {/* <p>
                         Books are the quietest and most constant of friends.<br />
                         They are the most accessible and wisest of counselors, and the most patient of teachers.
-                    </p>
+                    </p> */}
                     <Link to="/" className="btn">Explore Now &#x27F6;</Link>
                 </div>
                 <div className="col-2">
