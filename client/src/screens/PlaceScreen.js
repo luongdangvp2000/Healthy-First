@@ -40,12 +40,12 @@ export default function PlaceScreen() {
                                     </div>
 
                                     <div className="col-2">
-                                        <p></p>
                                         <h1>{place.name}</h1>
                                         <h3>{place.address}</h3>
                                         <h3>{place.address}</h3>
                                         <h3>{place.number}</h3>
                                         <h3>{place.businessType}</h3>
+                                        <h3>{place.idCertificate}</h3>
                                         {/* <h3>{place.des}</h3> */}
                                     </div>
 

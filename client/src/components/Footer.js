@@ -15,7 +15,7 @@ export default function Footer() {
                             <div className="w3-section"><p><input className="w3-input w3-borde" type="text" placeholder="Email" name="Email" required /></p></div>
                             <div className="w3-section"><p><input className="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required /></p></div>
                             <div className="w3-section"><p><input className="w3-input w3-border" type="text" placeholder="Message" name="Message" required /></p></div>
-                            <button type="submit" class="w3-button w3-block w3-gray">Send</button>
+                            <button type="submit" className="w3-button w3-block w3-gray">Send</button>
                         </form>
                     </div>
                     <div className="footer-col-2">

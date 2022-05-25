@@ -7,7 +7,8 @@ import RegisterScreen from './screens/RegisterScreen';
 import Navbar from './components/Navbar';
 import PlaceScreen from './screens/PlaceScreen';
 import Footer from './components/Footer';
-
+import ProfileScreen from './screens/ProfileScreen';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -25,7 +26,10 @@ function App() {
         <Route path="/place/:id" element={<PlaceScreen />} />
         <Route path="/signin" element={<SigninScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/profile" element={<PrivateRoute><ProfileScreen /></PrivateRoute>} />
+
         <Route path="/" element={<HomeScreen />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>

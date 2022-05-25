@@ -33,6 +33,11 @@ export default function Navbar() {
                                         <Link to="#">{userInfo.name}<i className="fa fa-caret-down"></i>{' '}</Link>
                                         <ul className="dropdown-content">
                                             <li>
+                                                <Link to="/profile">User Profile</Link>
+                                            </li>
+
+
+                                            <li>
                                                 <Link to="#signout" onClick={signoutHandler}>
                                                     Sign Out
                                                 </Link>
