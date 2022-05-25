@@ -9,7 +9,8 @@ import PlaceScreen from './screens/PlaceScreen';
 import Footer from './components/Footer';
 import ProfileScreen from './screens/ProfileScreen';
 import PrivateRoute from './components/PrivateRoute';
-
+import AdminRoute from './components/AdminRoute';
+import PlaceListScreen from './screens/PlaceListScreen';
 function App() {
   return (
     <BrowserRouter>
@@ -27,8 +28,16 @@ function App() {
         <Route path="/signin" element={<SigninScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/profile" element={<PrivateRoute><ProfileScreen /></PrivateRoute>} />
-
-        <Route path="/" element={<HomeScreen />} />
+        <Route
+          path="/placelist"
+          element={
+            <AdminRoute>
+              <PlaceListScreen />
+            </AdminRoute>
+          }
+          exact
+        />
+        <Route path="/" element={<HomeScreen />} exact/>
 
       </Routes>
       <Footer />

@@ -36,7 +36,6 @@ export default function Navbar() {
                                                 <Link to="/profile">User Profile</Link>
                                             </li>
 
-
                                             <li>
                                                 <Link to="#signout" onClick={signoutHandler}>
                                                     Sign Out
@@ -51,7 +50,31 @@ export default function Navbar() {
                                     </Link>
                                 )
                             }
+                        </li>
 
+                        <li>
+                            {userInfo && userInfo.isAdmin && (
+                                <div className="dropdown">
+                                    <Link to="#admin">
+                                        Admin <i className="fa fa-caret-down"></i>
+                                    </Link>
+                                    <ul className="dropdown-content">
+                                        <li>
+                                            <Link to="/dashboard">Dashboard</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/placelist">Places</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/certificatelist">Certificates</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/userlist">Users</Link>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            )}
                         </li>
                     </ul>
                 </nav>

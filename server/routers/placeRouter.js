@@ -2,6 +2,7 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Place from '../models/placeModel.js';
+import { isAuth, isAdmin } from '../utils.js';
 
 const placeRouter = express.Router();
 
@@ -33,5 +34,29 @@ placeRouter.get(
         }
     })
 );
+
+placeRouter.post(
+    '/',
+    isAuth,
+    isAdmin,
+    //isSellerOrAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const place = new Place({
+            name: 'sample name' + Date.now(),
+            //seller: req.user._id,
+            address: 'sample address',
+            district: 'sample district',
+            number: 'sample number',
+            businessType: 'sample businessType',
+            idCertificate: 0,
+            image: 'images/Book_1.jpg',
+            status: 'Ok',
+            //certificate: 'sample',
+        });
+        const createdPlace = await place.save();
+        res.send({ message: 'Place Created', place: createdPlace });
+    })
+);
+
 
 export default placeRouter;

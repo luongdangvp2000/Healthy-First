@@ -37,7 +37,7 @@ export default function HomeScreen(props) {
                                             <th>NUMBER</th>
                                             <th>BUSINESS TYPE</th>
                                             <th>STATUS</th>
-                                            <th>OPTIONS</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,10 +49,10 @@ export default function HomeScreen(props) {
                                                 <th>{place.number}</th>
                                                 <th>{place.businessType}</th>
                                                 <th>{place.status}</th>
-                                                <th>
+                                                {/* <th>
                                                     <p>Edit</p>
                                                     <p>Delete</p>
-                                                </th>
+                                                </th> */}
                                             </tr>
                                         ))}
                                     </tbody>
