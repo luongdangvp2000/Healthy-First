@@ -9,6 +9,10 @@ const {
     PLACE_CREATE_SUCCESS,
     PLACE_CREATE_FAIL,
     PLACE_CREATE_RESET,
+    PLACE_UPDATE_REQUEST,
+    PLACE_UPDATE_SUCCESS,
+    PLACE_UPDATE_FAIL,
+    PLACE_UPDATE_RESET,
 } = require('../constants/placeConstants');
 
 
@@ -57,3 +61,19 @@ export const placeCreateReducer = (state = {}, action) => {
             return state;
     }
 };
+
+export const placeUpdateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case PLACE_UPDATE_REQUEST:
+            return { loading: true };
+        case PLACE_UPDATE_SUCCESS:
+            return { loading: false, success: true };
+        case PLACE_UPDATE_FAIL:
+            return { loading: false, error: action.payload };
+        case PLACE_UPDATE_RESET:
+            return {};
+        default:
+            return state;
+    }
+};
+

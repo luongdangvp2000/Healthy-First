@@ -11,6 +11,8 @@ import ProfileScreen from './screens/ProfileScreen';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import PlaceListScreen from './screens/PlaceListScreen';
+import PlaceEditScreen from './screens/PlaceEditScreen';
+
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +27,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/place/:id" element={<PlaceScreen />} exact/>
+        <Route path="/place/:id/edit" element={<PlaceEditScreen />} exact/>
         <Route path="/signin" element={<SigninScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/profile" element={<PrivateRoute><ProfileScreen /></PrivateRoute>} />

@@ -58,5 +58,28 @@ placeRouter.post(
     })
 );
 
+placeRouter.put(
+    '/:id',
+    isAuth,
+    isAdmin,
+    //isSellerOrAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const placeId = req.params.id;
+        const place = await Place.findById(placeId);
+        if (place) {
+            place.name = req.body.name;
+            place.address = req.body.address;
+            place.image = req.body.image;
+            place.district = req.body.district;
+            place.number = req.body.number;
+            place.businessType = req.body.businessType;
+            place.status = req.body.status;
+            const updatedPlace = await place.save();
+            res.send({ message: 'Place Updated', place: updatedPlace });
+        } else {
+            res.status(404).send({ message: 'Place Not Found' });
+        }
+    })
+);
 
 export default placeRouter;
