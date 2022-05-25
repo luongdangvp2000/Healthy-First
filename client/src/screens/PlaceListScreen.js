@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createPlace, listPlaces } from "../actions/placeActions";
+import { createPlace, listPlaces, deletePlace } from "../actions/placeActions";
 import { Link, useNavigate } from "react-router-dom";
 
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { PLACE_CREATE_RESET, PLACE_DELETE_RESET } from "../constants/placeConstants";
+
 
 export default function PlaceListScreen() {
     const navigate = useNavigate();
@@ -21,6 +22,13 @@ export default function PlaceListScreen() {
         place: createdPlace,
     } = placeCreate;
 
+    const placeDelete = useSelector((state) => state.placeDelete);
+    const {
+        loading: loadingDelete,
+        error: errorDelete,
+        success: successDelete,
+    } = placeDelete;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,13 +36,18 @@ export default function PlaceListScreen() {
             dispatch({ type: PLACE_CREATE_RESET });
             navigate(`/place/${createdPlace._id}/edit`);
         }
+        if (successDelete) {
+            dispatch({ type: PLACE_DELETE_RESET });
+        }
         dispatch(listPlaces())
-    }, [createdPlace, dispatch, navigate, successCreate]);
+    }, [createdPlace, dispatch, navigate, successCreate, successDelete]);
 
-    const deleteHandler = (product) => {
-        // if (window.confirm('Are you sure to delete?')) {
-        //     dispatch(deleteProduct(product._id));
-        // }
+ 
+
+    const deleteHandler = (place) => {
+        if (window.confirm('Are you sure to delete?')) {
+            dispatch(deletePlace(place._id));
+        }
     };
 
     const createHandler = () => {
@@ -48,6 +61,9 @@ export default function PlaceListScreen() {
                     Create Place
                 </button>
             </div>
+
+            {loadingDelete && <LoadingBox></LoadingBox>}
+            {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
 
             {loadingCreate && <LoadingBox></LoadingBox>}
             {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}

@@ -82,4 +82,19 @@ placeRouter.put(
     })
 );
 
+placeRouter.delete(
+    '/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+        const place = await Place.findById(req.params.id);
+        if (place) {
+            const deletePlace = await place.remove();
+            res.send({ message: 'Place Deleted', place: deletePlace });
+        } else {
+            res.status(404).send({ message: 'Place Not Found' });
+        }
+    })
+);
+
 export default placeRouter;

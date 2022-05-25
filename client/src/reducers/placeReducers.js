@@ -13,6 +13,10 @@ const {
     PLACE_UPDATE_SUCCESS,
     PLACE_UPDATE_FAIL,
     PLACE_UPDATE_RESET,
+    PLACE_DELETE_REQUEST,
+    PLACE_DELETE_SUCCESS,
+    PLACE_DELETE_FAIL,
+    PLACE_DELETE_RESET,
 } = require('../constants/placeConstants');
 
 
@@ -71,6 +75,21 @@ export const placeUpdateReducer = (state = {}, action) => {
         case PLACE_UPDATE_FAIL:
             return { loading: false, error: action.payload };
         case PLACE_UPDATE_RESET:
+            return {};
+        default:
+            return state;
+    }
+};
+
+export const placeDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case PLACE_DELETE_REQUEST:
+            return { loading: true };
+        case PLACE_DELETE_SUCCESS:
+            return { loading: false, success: true };
+        case PLACE_DELETE_FAIL:
+            return { loading: false, error: action.payload };
+        case PLACE_DELETE_RESET:
             return {};
         default:
             return state;

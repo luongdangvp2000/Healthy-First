@@ -25,3 +25,4 @@ yarn-error.log*
 .env
 #Ngan upload anh len github
 /uploads/*.jpg 
+/server/uploads/*.jpg

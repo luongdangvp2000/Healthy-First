@@ -14,6 +14,10 @@ import {
   PLACE_UPDATE_SUCCESS,
   PLACE_UPDATE_FAIL,
   PLACE_UPDATE_RESET,
+  PLACE_DELETE_REQUEST,
+  PLACE_DELETE_SUCCESS,
+  PLACE_DELETE_FAIL,
+  PLACE_DELETE_RESET,
 } from "../constants/placeConstants";
 
 export const listPlaces = () => async (dispatch) => {
@@ -87,3 +91,23 @@ export const updatePlace = (place) => async (dispatch, getState) => {
     dispatch({ type: PLACE_UPDATE_FAIL, error: message });
   }
 };
+
+export const deletePlace = (placeId) => async (dispatch, getState) => {
+  dispatch({ type: PLACE_DELETE_REQUEST, payload: placeId });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.delete(`/api/places/${placeId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
+    dispatch({ type: PLACE_DELETE_SUCCESS });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: PLACE_DELETE_FAIL, payload: message });
+  }
+};
+
