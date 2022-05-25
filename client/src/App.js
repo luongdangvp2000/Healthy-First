@@ -24,7 +24,7 @@ function App() {
         </div>
       </div>
       <Routes>
-        <Route path="/place/:id" element={<PlaceScreen />} />
+        <Route path="/place/:id" element={<PlaceScreen />} exact/>
         <Route path="/signin" element={<SigninScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/profile" element={<PrivateRoute><ProfileScreen /></PrivateRoute>} />

@@ -1,29 +1,57 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listPlaces } from "../actions/placeActions";
+import { createPlace, listPlaces } from "../actions/placeActions";
 import { Link, useNavigate } from "react-router-dom";
 
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import { PLACE_CREATE_RESET, PLACE_DELETE_RESET } from "../constants/placeConstants";
 
 export default function PlaceListScreen() {
     const navigate = useNavigate();
 
     const placeList = useSelector(state => state.placeList);
     const { loading, error, places } = placeList;
+
+    const placeCreate = useSelector(state => state.placeCreate);
+    const {
+        loading: loadingCreate,
+        error: errorCreate,
+        success: successCreate,
+        place: createdPlace,
+    } = placeCreate;
+
     const dispatch = useDispatch();
+
     useEffect(() => {
+        if (successCreate) {
+            dispatch({ type: PLACE_CREATE_RESET });
+            navigate(`/place/${createdPlace._id}/edit`);
+        }
         dispatch(listPlaces())
-    }, [dispatch])
+    }, [createdPlace, dispatch, navigate, successCreate]);
 
     const deleteHandler = (product) => {
         // if (window.confirm('Are you sure to delete?')) {
         //     dispatch(deleteProduct(product._id));
         // }
     };
+
+    const createHandler = () => {
+        dispatch(createPlace());
+    };
     return (
         <div>
-            <h1>Places</h1>
+            <div className="row">
+                <h1>Places</h1>
+                <button type="button" className="primary" onClick={createHandler}>
+                    Create Place
+                </button>
+            </div>
+
+            {loadingCreate && <LoadingBox></LoadingBox>}
+            {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
+
             {loading ? (
                 <LoadingBox></LoadingBox>
             ) : error ? (

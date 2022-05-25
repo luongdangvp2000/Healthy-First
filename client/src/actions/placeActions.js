@@ -6,6 +6,10 @@ import {
     PLACE_DETAILS_REQUEST,
     PLACE_DETAILS_SUCCESS,
     PLACE_DETAILS_FAIL,
+    PLACE_CREATE_REQUEST,
+    PLACE_CREATE_SUCCESS,
+    PLACE_CREATE_FAIL,
+    PLACE_CREATE_RESET,
 } from "../constants/placeConstants";
 
 export const listPlaces = () => async (dispatch) => {
@@ -38,3 +42,25 @@ export const detailsPlace = (placeId) => async (dispatch) => {
         });
     }
 };
+
+export const createPlace = () => async (dispatch, getState) => {
+    dispatch({ type: PLACE_CREATE_REQUEST });
+    const { userSignin: { userInfo } } = getState();
+    try {
+      const { data } = await Axios.post('/api/places', {},
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({
+        type: PLACE_CREATE_SUCCESS,
+        payload: data.place,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: PLACE_CREATE_FAIL, payload: message });
+    }
+  };
