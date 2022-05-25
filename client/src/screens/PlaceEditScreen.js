@@ -7,6 +7,9 @@ import MessageBox from "../components/MessageBox";
 import { updatePlace } from "../actions/placeActions";
 import { PLACE_UPDATE_RESET } from "../constants/placeConstants";
 
+import Axios from "axios";
+
+
 export default function PlaceEditScreen() {
     const navigate = useNavigate();
     const params = useParams();
@@ -64,8 +67,33 @@ export default function PlaceEditScreen() {
             image,
             status,
         }));
+    };
 
-    }
+    const [loadingUpload, setLoadingUpload] = useState(false);
+    const [errorUpload, setErrorUpload] = useState('');
+
+
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0];
+        const bodyFormData = new FormData();
+        bodyFormData.append('image', file);
+        setLoadingUpload(true);
+        try {
+            const { data } = await Axios.post('/api/uploads', bodyFormData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${userInfo.token}`,
+                },
+            });
+            setImage(data);
+            setLoadingUpload(false);
+        } catch (error) {
+            setErrorUpload(error.message);
+            setLoadingUpload(false);
+        }
+    };
     return (
         <div>
             <form className="form" onSubmit={submitHandler}>
@@ -142,16 +170,6 @@ export default function PlaceEditScreen() {
                             ></input>
                         </div>
 
-                        <div>
-                            <label htmlFor="name">Name</label>
-                            <input
-                                id="name"
-                                type="text"
-                                placeholder="Enter name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            ></input>
-                        </div>
 
                         <div>
                             <label htmlFor="image">Image</label>
@@ -162,6 +180,18 @@ export default function PlaceEditScreen() {
                                 value={image}
                                 onChange={(e) => setImage(e.target.value)}
                             ></input>
+                        </div>
+
+                        <div>
+                            <label htmlFor="imageFile">Image File</label>
+                            <input
+                                type="file"
+                                id="imageFile"
+                                label="Choose Image"
+                                onChange={uploadFileHandler}
+                            ></input>
+                            {loadingUpload && <LoadingBox></LoadingBox>}
+                            {errorUpload && (<MessageBox variant="danger">{errorUpload}</MessageBox>)}
                         </div>
 
                         <div>

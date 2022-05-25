@@ -1,8 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 // import data from './data.js';
+import path from 'path';
 import dotenv from 'dotenv';
-
+import uploadRouter from './routers/uploadRouter.js';
 import userRouter from './routers/userRouter.js';
 import placeRouter from './routers/placeRouter.js';
 
@@ -33,8 +34,13 @@ app.use(express.urlencoded({ extended: true }));
 //     res.send(data.places)
 // })
 
+app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/places', placeRouter);
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
