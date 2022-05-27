@@ -13,6 +13,7 @@ import {
     userSigninReducer,
     userUpdateProfileReducer, 
     userListReducer,
+    userDeleteReducer,
 } from './reducers/userReducers';
 
 
@@ -34,6 +35,7 @@ const reducer = combineReducers({
     placeUpdate: placeUpdateReducer,
     placeDelete: placeDeleteReducer,
     userList: userListReducer,
+    userDelete: userDeleteReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
