@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import PlaceListScreen from './screens/PlaceListScreen';
 import PlaceEditScreen from './screens/PlaceEditScreen';
+import UserListScreen from './screens/UserListScreen';
 
 function App() {
   return (
@@ -26,8 +27,8 @@ function App() {
         </div>
       </div>
       <Routes>
-        <Route path="/place/:id" element={<PlaceScreen />} exact/>
-        <Route path="/place/:id/edit" element={<PlaceEditScreen />} exact/>
+        <Route path="/place/:id" element={<PlaceScreen />} exact />
+        <Route path="/place/:id/edit" element={<PlaceEditScreen />} exact />
         <Route path="/signin" element={<SigninScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/profile" element={<PrivateRoute><ProfileScreen /></PrivateRoute>} />
@@ -40,7 +41,16 @@ function App() {
           }
           exact
         />
-        <Route path="/" element={<HomeScreen />} exact/>
+        <Route
+          path="/userlist"
+          element={
+            <AdminRoute>
+              <UserListScreen />
+            </AdminRoute>
+          }
+          exact
+        />
+        <Route path="/" element={<HomeScreen />} exact />
 
       </Routes>
       <Footer />
