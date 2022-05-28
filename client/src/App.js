@@ -13,6 +13,7 @@ import AdminRoute from './components/AdminRoute';
 import PlaceListScreen from './screens/PlaceListScreen';
 import PlaceEditScreen from './screens/PlaceEditScreen';
 import UserListScreen from './screens/UserListScreen';
+import UserEditScreen from './screens/UserEditScreen';
 
 function App() {
   return (
@@ -49,6 +50,15 @@ function App() {
             </AdminRoute>
           }
           exact
+        />
+
+        <Route
+          path="/user/:id/edit"
+          element={
+            <AdminRoute>
+              <UserEditScreen />
+            </AdminRoute>
+          }
         />
         <Route path="/" element={<HomeScreen />} exact />
 
