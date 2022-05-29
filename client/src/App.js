@@ -14,6 +14,7 @@ import PlaceListScreen from './screens/PlaceListScreen';
 import PlaceEditScreen from './screens/PlaceEditScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
+import SupervisorRoute from './components/SupervisorRoute';
 
 function App() {
   return (
@@ -58,6 +59,15 @@ function App() {
             <AdminRoute>
               <UserEditScreen />
             </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/placelist/supervisor"
+          element={
+            <SupervisorRoute>
+              <PlaceListScreen />
+            </SupervisorRoute>
           }
         />
         <Route path="/" element={<HomeScreen />} exact />

@@ -53,6 +53,24 @@ export default function Navbar() {
                         </li>
 
                         <li>
+                            {userInfo && userInfo.isSupervisor && (
+                                <div className="dropdown">
+                                    <Link to="#admin">
+                                        Supervisor <i className="fa fa-caret-down"></i>
+                                    </Link>
+                                    <ul className="dropdown-content">
+                                        <li>
+                                            <Link to="/placelist/supervisor">Places</Link>
+                                        </li>
+                                        {/* <li>
+                                            <Link to="/orderlist/seller">Orders</Link>
+                                        </li> */}
+                                    </ul>
+                                </div>
+                            )}
+                        </li>
+
+                        <li>
                             {userInfo && userInfo.isAdmin && (
                                 <div className="dropdown">
                                     <Link to="#admin">

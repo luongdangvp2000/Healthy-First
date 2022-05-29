@@ -12,6 +12,9 @@ export default function ProfileScreen() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [supervisorName, setSupervisorName] = useState('');
+    const [supervisorEmail, setSupervisorEmail] = useState('');
+
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
 
@@ -32,6 +35,10 @@ export default function ProfileScreen() {
         } else {
             setName(user.name);
             setEmail(user.email);
+            if (user.supervisor) {
+                setSupervisorName(user.supervisor.name);
+                setSupervisorEmail(user.supervisor.email);
+            }
         }
 
         //dispatch(detailsUser(userInfo._id));
@@ -49,7 +56,9 @@ export default function ProfileScreen() {
                     userId: user._id,
                     name,
                     email,
-                    password
+                    password,
+                    supervisorName,
+                    supervisorEmail,
                 })
             );
         }
@@ -115,6 +124,33 @@ export default function ProfileScreen() {
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             ></input>
                         </div>
+
+                        {user.isSupervisor && (
+                            <>
+                                <h2>Supervisor</h2>
+                                <div>
+                                    <label htmlFor="supervisorName">Supervisor Name</label>
+                                    <input
+                                        id="supervisorName"
+                                        type="text"
+                                        placeholder="Enter Supervisor Name"
+                                        value={supervisorName}
+                                        onChange={(e) => setSupervisorName(e.target.value)}
+                                    ></input>
+                                </div>
+                                <div>
+                                    <label htmlFor="supervisorEmail">Supervisor Email</label>
+                                    <input
+                                        id="supervisorEmail"
+                                        type="text"
+                                        placeholder="Enter Supervisor Email"
+                                        value={supervisorEmail}
+                                        onChange={(e) => setSupervisorEmail(e.target.value)}
+                                    ></input>
+                                </div>
+                            </>
+                        )}
+
                         <div>
                             <label />
                             <button className="primary" type="submit">
