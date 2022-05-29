@@ -205,6 +205,8 @@ export default function PlaceEditScreen() {
                             ></input>
                         </div>
 
+                        
+
                         <div>
                             <label></label>
                             <button className="primary" type="submit">

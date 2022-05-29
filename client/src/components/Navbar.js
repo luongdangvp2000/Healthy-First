@@ -62,9 +62,9 @@ export default function Navbar() {
                                         <li>
                                             <Link to="/placelist/supervisor">Places</Link>
                                         </li>
-                                        {/* <li>
-                                            <Link to="/orderlist/seller">Orders</Link>
-                                        </li> */}
+                                        <li>
+                                            <Link to="/certificatelist/supervisor">Certificates</Link>
+                                        </li>
                                     </ul>
                                 </div>
                             )}
