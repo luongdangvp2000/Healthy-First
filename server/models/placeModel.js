@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 
 const certificateSchema = new mongoose.Schema(
     {
-        beginDate: {type:Date, required: true},
-        endDate: {type:Date, required:true},
+        name: {type:String, required: true},
+        // beginDate: {type:Date},
+        // endDate: {type:Date},
+        comment: {type: String, required: true}
     },
     {
         timestamps: true,
@@ -19,7 +21,7 @@ const placeSchema = new mongoose.Schema({
     idCertificate: {type: Number, required: true},
     image: {type: String, required: true},
     status: {type: String, required: true},
-    certificate: [certificateSchema],
+    certificates: [certificateSchema],
 },{
     timestamps: true,
 })
@@ -27,3 +29,4 @@ const placeSchema = new mongoose.Schema({
 const Place = mongoose.model('Place', placeSchema);
 
 export default Place;
+

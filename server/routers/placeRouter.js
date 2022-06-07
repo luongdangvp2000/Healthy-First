@@ -97,4 +97,38 @@ placeRouter.delete(
     })
 );
 
+placeRouter.post(
+    '/:id/certificates',
+    isAuth,
+    expressAsyncHandler(async (req, res) => {
+        const placeId = req.params.id;
+        const place = await Place.findById(placeId);
+        if (place) {
+            if (place.certificates.find((x) => x.name === req.user.name)) {
+                return res
+                    .status(400)
+                    .send({ message: 'You already add certificate' });
+            }
+            const certificate = {
+                name: req.user.name,
+                //   beginDate: req.body.beginDate,
+                //   endDate: req.body.endDate,
+                comment: req.body.comment
+            };
+            place.certificates.push(certificate);
+            // place.numCertificates = place.certificates.length;
+            // place. =
+            //   place.certificates.reduce((a, c) => c.rating + a, 0) /
+            //   place.certificates.length;
+            const updatedPlace = await place.save();
+            res.status(201).send({
+                message: 'Certificate Created',
+                certificate: updatedPlace.certificates[updatedPlace.certificates.length - 1],
+            });
+        } else {
+            res.status(404).send({ message: 'Place Not Found' });
+        }
+    })
+);
+
 export default placeRouter;

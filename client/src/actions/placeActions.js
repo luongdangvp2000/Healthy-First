@@ -18,6 +18,10 @@ import {
   PLACE_DELETE_SUCCESS,
   PLACE_DELETE_FAIL,
   PLACE_DELETE_RESET,
+  PLACE_CERTIFICATE_CREATE_SUCCESS,
+  PLACE_CERTIFICATE_CREATE_REQUEST,
+  PLACE_CERTIFICATE_CREATE_RESET,
+  PLACE_CERTIFICATE_CREATE_FAIL
 } from "../constants/placeConstants";
 
 export const listPlaces = () => async (dispatch) => {
@@ -111,3 +115,29 @@ export const deletePlace = (placeId) => async (dispatch, getState) => {
   }
 };
 
+export const createCertificate =
+  (placeId, certificate) => async (dispatch, getState) => {
+    dispatch({ type: PLACE_CERTIFICATE_CREATE_REQUEST });
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    try {
+      const { data } = await Axios.post(
+        `/api/places/${placeId}/certificates`,
+        certificate,
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({
+        type: PLACE_CERTIFICATE_CREATE_SUCCESS,
+        payload: data.certificate,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: PLACE_CERTIFICATE_CREATE_FAIL, payload: message });
+    }
+  };

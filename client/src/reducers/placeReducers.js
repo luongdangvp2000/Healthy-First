@@ -17,10 +17,14 @@ const {
     PLACE_DELETE_SUCCESS,
     PLACE_DELETE_FAIL,
     PLACE_DELETE_RESET,
+    PLACE_CERTIFICATE_CREATE_REQUEST,
+    PLACE_CERTIFICATE_CREATE_SUCCESS,
+    PLACE_CERTIFICATE_CREATE_FAIL,
+    PLACE_CERTIFICATE_CREATE_RESET,
 } = require('../constants/placeConstants');
 
 
-export const placeListReducer = (state = {loading: true, places: []}, action) => {
+export const placeListReducer = (state = { loading: true, places: [] }, action) => {
     switch (action.type) {
         case PLACE_LIST_REQUEST:
             return { loading: true };
@@ -56,7 +60,7 @@ export const placeCreateReducer = (state = {}, action) => {
         case PLACE_CREATE_REQUEST:
             return { loading: true };
         case PLACE_CREATE_SUCCESS:
-            return { loading: false, success: true, place: action.payload};
+            return { loading: false, success: true, place: action.payload };
         case PLACE_CREATE_FAIL:
             return { loading: false, error: action.payload };
         case PLACE_CREATE_RESET:
@@ -90,6 +94,21 @@ export const placeDeleteReducer = (state = {}, action) => {
         case PLACE_DELETE_FAIL:
             return { loading: false, error: action.payload };
         case PLACE_DELETE_RESET:
+            return {};
+        default:
+            return state;
+    }
+};
+
+export const placeCertificateCreateReducer = (state = {}, action) => {
+    switch (action.type) {
+        case PLACE_CERTIFICATE_CREATE_REQUEST:
+            return { loading: true };
+        case PLACE_CERTIFICATE_CREATE_SUCCESS:
+            return { loading: false, success: true, certificate: action.payload };
+        case PLACE_CERTIFICATE_CREATE_FAIL:
+            return { loading: false, error: action.payload };
+        case PLACE_CERTIFICATE_CREATE_RESET:
             return {};
         default:
             return state;

@@ -19,7 +19,7 @@ export default function Footer() {
                         </form>
                     </div>
                     <div className="footer-col-2">
-                        <img src="/images/EbookStore-Logo-footer.png" />
+                        {/* <img src="/images/EbookStore-Logo-footer.png" /> */}
                         <p>
                             “Your time is limited, so don't waste it living someone else's life.”
                         </p> <br />
