@@ -76,7 +76,7 @@ export default function PlaceScreen() {
                                         <h3>{place.status}</h3>
                                     </div>
                                     <div>
-                                        {place.status === 'OK' || place.status === 'ok' || place.status === 'Ok' ? (
+                                        {place.status === 'OK' || place.status === 'ok' || place.status === 'Ok' || place.status === 'oK' ? (
                                             <div>
 
                                                 <h2 id="certificates">

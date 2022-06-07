@@ -81,7 +81,6 @@ export default function Navbar() {
                                         <li>
                                             <Link to="/userlist">Users</Link>
                                         </li>
-
                                     </ul>
                                 </div>
                             )}
