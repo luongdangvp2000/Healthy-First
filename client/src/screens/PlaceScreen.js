@@ -95,11 +95,11 @@ export default function PlaceScreen() {
                                                             <p>{certificate.endDate}</p> */}
 
                                                             <div>
-                                                                <p>Begin Date: {certificate.createdAt.substring(0, 10)}</p>
+                                                                <p>Begin Date: {certificate.createdAt}</p>
                                                             </div>
 
                                                             <div>
-                                                                <p>End Date: </p>
+                                                                <p>End Date: {Date(Date.parse(certificate.createdAt)+1000*60*60*24*30)}</p>
                                                             </div>
 
                                                             {/* <p>{certificate.comment}</p> */}
