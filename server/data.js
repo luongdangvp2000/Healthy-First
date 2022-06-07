@@ -7,15 +7,7 @@ const data = {
             email: 'admin@gmail.com',
             password: bcrypt.hashSync('1234', 8),
             isAdmin: true,
-            // isSeller: true,
-            // seller: {
-            //     name: 'Puma',
-            //     logo: '/images/logo1.png',
-            //     status: 'best seller',
-            //     rating: 4.5,
-            //     numReviews: 120,
-
-            // },
+           
         },
         {
             name: 'Dangg',
@@ -27,7 +19,6 @@ const data = {
     places: [
         {
             // _id: '1',
-            
             name: 'Thit cho Ngu Kien',
             slug: 'thit-cho-ngu-kien',
             address: 'So 1, duong Pham Van Dong, phuong Dich Vong Hau',
@@ -40,7 +31,6 @@ const data = {
         },
         {
             //_id: '2',
-            
             name: 'Banh mi Dan To',
             slug: 'banh-mi-dan-to',
             address: 'So 2, duong Pham Van Dong, phuong Dich Vong Hau',

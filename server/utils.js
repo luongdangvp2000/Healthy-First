@@ -44,3 +44,19 @@ export const isAdmin = (req, res, next) => {
         res.status(401).send({ message: 'Invalid Admin Token' });
     }
 };
+
+export const isSupervisor = (req, res, next) => {
+    if (req.user && req.user.isSupervisor) {
+        next();
+    } else {
+        res.status(401).send({ message: 'Invalid Supervisor Token' });
+    }
+};
+
+export const isSupervisorOrAdmin = (req, res, next) => {
+    if (req.user && (req.user.isSupervisor || req.user.isAdmin)) {
+        next();
+    } else {
+        res.status(401).send({ message: 'Invalid Admin/Supervisor Token' });
+    }
+};

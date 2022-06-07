@@ -114,6 +114,8 @@ export default function PlaceListScreen() {
                     </tbody>
                 </table>
             )}
+            <br />
+            <br />
         </div>
     );
 }

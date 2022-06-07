@@ -2,7 +2,7 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Place from '../models/placeModel.js';
-import { isAuth, isAdmin } from '../utils.js';
+import { isAuth, isAdmin, isSupervisorOrAdmin } from '../utils.js';
 
 const placeRouter = express.Router();
 
@@ -38,8 +38,8 @@ placeRouter.get(
 placeRouter.post(
     '/',
     isAuth,
-    isAdmin,
-    //isSellerOrAdmin,
+    //isAdmin,
+    isSupervisorOrAdmin,
     expressAsyncHandler(async (req, res) => {
         const place = new Place({
             name: 'sample name' + Date.now(),
@@ -61,8 +61,8 @@ placeRouter.post(
 placeRouter.put(
     '/:id',
     isAuth,
-    isAdmin,
-    //isSellerOrAdmin,
+    //isAdmin,
+    isSupervisorOrAdmin,
     expressAsyncHandler(async (req, res) => {
         const placeId = req.params.id;
         const place = await Place.findById(placeId);
