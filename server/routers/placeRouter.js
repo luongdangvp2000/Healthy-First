@@ -42,12 +42,12 @@ placeRouter.post(
     isSupervisorOrAdmin,
     expressAsyncHandler(async (req, res) => {
         const place = new Place({
-            name: 'sample name' + Date.now(),
+            name: 'Nhat nuong' + Date.now(),
             //seller: req.user._id,
-            address: 'sample address',
-            district: 'sample district',
-            number: 'sample number',
-            businessType: 'sample businessType',
+            address: 'So 1, duong Ho Tung Mau, phuong Dich Vong Hau',
+            district: 'Cau Giay',
+            number: '0123456789',
+            businessType: 'Food production',
             idCertificate: 0,
             image: 'images/restaurant_1.jpg',
             status: 'Ok',
