@@ -49,7 +49,7 @@ placeRouter.post(
             number: 'sample number',
             businessType: 'sample businessType',
             idCertificate: 0,
-            image: 'images/Book_1.jpg',
+            image: 'images/restaurant_1.jpg',
             status: 'Ok',
             //certificate: 'sample',
         });

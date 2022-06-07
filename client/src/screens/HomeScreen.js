@@ -32,7 +32,7 @@ export default function HomeScreen(props) {
                                         {/* <h1 className="w3-center w3-text-grey"><b>Jane & John</b></h1> */}
                                         {/* <img className="w3-round w3-grayscale-min" src="/w3images/wedding_couple2.jpg" style="width:100%;margin:32px 0" /> */}
                                         <div className='w3-center'>
-                                            <img className='' src="images/elon-musk.jpg" />
+                                            <img className="" src="images/elon-musk.jpg" />
                                         </div>
                                         <br />
 
