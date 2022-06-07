@@ -62,9 +62,6 @@ export default function Navbar() {
                                         <li>
                                             <Link to="/placelist/supervisor">Places</Link>
                                         </li>
-                                        <li>
-                                            <Link to="/certificatelist/supervisor">Certificates</Link>
-                                        </li>
                                     </ul>
                                 </div>
                             )}
@@ -78,14 +75,9 @@ export default function Navbar() {
                                     </Link>
                                     <ul className="dropdown-content">
                                         <li>
-                                            <Link to="/dashboard">Dashboard</Link>
-                                        </li>
-                                        <li>
                                             <Link to="/placelist">Places</Link>
                                         </li>
-                                        <li>
-                                            <Link to="/certificatelist">Certificates</Link>
-                                        </li>
+                                        
                                         <li>
                                             <Link to="/userlist">Users</Link>
                                         </li>
